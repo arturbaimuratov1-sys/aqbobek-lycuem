@@ -91,6 +91,10 @@ export (`output: "export"` in `next.config.ts`, `images.unoptimized`), so
 Cloudflare Pages serves the `out/` directory directly. Local development is
 unaffected (`npm run dev` works as usual).
 
+> Important: create a **Pages** project, not a Workers project. A Workers /
+> OpenNext setup looks for `.next/standalone/...` and will fail — this site
+> needs no SSR, server actions, API routes, or Worker runtime.
+
 1. Cloudflare Dashboard → Workers & Pages → Create → **Pages** → Connect to Git
 2. Select `arturbaimuratov1-sys/aqbobek-lycuem`
 3. Build settings:
