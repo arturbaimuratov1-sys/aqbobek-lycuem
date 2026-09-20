@@ -20,8 +20,8 @@ export default function Home() {
   return (
     <>
       <HomeHero
-        image="/images/hero/background1.jpg"
-        imageAlt="«Ақбөбек» лицейінің кампусы"
+        image="/images/hero/aqbobek-students-hero.png"
+        imageAlt="«Ақбөбек» лицейінің түлектері — AL26"
       />
 
       {/* Mission / Vision / Values */}
