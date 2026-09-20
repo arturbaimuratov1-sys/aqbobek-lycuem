@@ -84,7 +84,7 @@ test.describe("news ticker", () => {
 });
 
 test.describe("director portrait", () => {
-  test("hover/tap does not crash; missing states degrade gracefully", async ({ page }) => {
+  test("ping-pong 1→2→3→2→1, one advance per enter", async ({ page }) => {
     const errors = await watchErrors(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "networkidle" });
@@ -92,7 +92,7 @@ test.describe("director portrait", () => {
     const portrait = page.getByRole("button", { name: /Интерактивті портрет/ });
     await portrait.scrollIntoViewIfNeeded();
     await expect(portrait).toBeVisible();
-    // Full rotation 1 → 2 → 3 → 1, one advance per pointer-enter,
+    // Full ping-pong rotation 1 → 2 → 3 → 2 → 1, one advance per pointer-enter,
     // asserted on the actual crossfade (computed opacity per state).
     const opacityOf = (n: number) =>
       page
@@ -106,6 +106,9 @@ test.describe("director portrait", () => {
     await away.hover();
     await portrait.hover();
     await expect.poll(() => opacityOf(3)).toBe("1");
+    await away.hover();
+    await portrait.hover();
+    await expect.poll(() => opacityOf(2)).toBe("1");
     await away.hover();
     await portrait.hover();
     await expect.poll(() => opacityOf(1)).toBe("1");

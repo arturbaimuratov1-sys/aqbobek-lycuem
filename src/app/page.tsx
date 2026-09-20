@@ -121,7 +121,7 @@ export default function Home() {
           <Reveal className="lg:col-span-4">
             <DirectorPortrait portraits={director.portraits} alt={director.portraitAlt} />
             <p className="mt-5">
-              <span aria-hidden="true" className="block h-0.5 w-12 bg-gold-500" />
+              <span aria-hidden="true" className="block h-0.5 w-12 bg-steel-600" />
               <span className="mt-3 block font-display text-lg text-navy-900">{director.name}</span>
               <span className="mt-0.5 block text-[13.5px] text-ink-500">{director.title}</span>
             </p>
