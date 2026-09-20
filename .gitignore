@@ -16,6 +16,9 @@
 /playwright-report/
 qa/screenshots/
 
+# superpowers scratch workspaces (local execution record, never commit)
+.superpowers/
+
 # next.js
 /.next/
 /out/
