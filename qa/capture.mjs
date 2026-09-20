@@ -7,12 +7,14 @@ import { chromium } from "@playwright/test";
 
 const SECTIONS = [
   ["hero", "section:has(h1)"],
-  ["director", "section[aria-labelledby='director-title']"],
-  ["ticker", "section.ticker"],
-  ["teachers", "section[aria-labelledby='teachers-title']"],
+  ["manifesto", "section[aria-labelledby='manifesto-title']"],
+  ["education", "section[aria-labelledby='edu-title']"],
   ["campus", "section[aria-labelledby='campus-title']"],
+  ["director", "section[aria-labelledby='director-title']"],
+  ["people", "section[aria-labelledby='people-title']"],
+  ["wire", "section[aria-label='Хабарландырулар лентасы']"],
   ["latest-news", "section[aria-labelledby='news-title']"],
-  ["cta", "section[aria-labelledby='cta-title']"],
+  ["admissions", "section[aria-labelledby='admissions-title']"],
 ];
 
 (async () => {

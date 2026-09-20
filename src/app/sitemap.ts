@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { news } from "@/content/kk/news";
+import { notices } from "@/content/kk/news";
 
 export const dynamic = "force-static";
 
@@ -12,9 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}${route === "" ? "/" : route}`,
       lastModified: new Date("2026-09-20"),
     })),
-    ...news.map((n) => ({
+    ...notices.map((n) => ({
       url: `${BASE}/news/${n.slug}`,
-      lastModified: new Date(n.date),
+      lastModified: new Date("2026-09-20"),
     })),
   ];
 }

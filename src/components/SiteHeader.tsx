@@ -68,17 +68,17 @@ export function SiteHeader() {
             <Image
               src={site.brand.logo}
               alt=""
-              width={160}
-              height={64}
-              className="h-10 w-auto outline outline-1 outline-white/15 outline-offset-4 md:h-11"
+              width={96}
+              height={96}
+              className="h-10 w-10 object-cover md:h-11 md:w-11"
               priority
             />
             <span className="hidden flex-col leading-tight sm:flex">
-              <span className="font-display text-[13px] font-medium tracking-wide text-white">
-                {site.brand.full}
+              <span className="font-display text-[15px] font-medium tracking-wide text-white">
+                Aqbobek Lyceum
               </span>
-              <span className="text-[10px] uppercase tracking-[0.22em] text-frost-500">
-                Лицей-интернат
+              <span className="text-[9px] uppercase tracking-[0.24em] text-frost-500">
+                Boarding Lyceum · Aktobe
               </span>
             </span>
           </Link>

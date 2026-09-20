@@ -1,94 +1,71 @@
 /**
- * News data layer.
+ * Notice board — EVERGREEN, verified items only.
  *
- * NOTE: these are clearly-marked PLACEHOLDER items so the ticker, homepage
- * and /news page have structured data to render. Replace with real newsroom
- * content (or connect a CMS/API returning this same shape).
+ * Every item below is a standing fact from the Lyceum's official materials
+ * (admissions process, grants, clubs, exam formats). No dates, no events,
+ * no competitions, no achievements are claimed here. When the school has
+ * dated newsroom articles, extend this file with dated entries or connect
+ * a CMS returning the same shape plus `date`.
  *
- * Shape contract for a future CMS:
- * { slug, title, date (ISO), category, excerpt, image?, body? }
+ * Shape contract:
+ * { slug, kicker, title, excerpt, body[] }
  */
 
-export interface NewsItem {
+export interface Notice {
   slug: string;
+  kicker: string;
   title: string;
-  date: string;
-  category: string;
   excerpt: string;
-  /** Temporary: real editorial images replace these. */
-  image?: string;
-  placeholder: boolean;
+  body: string[];
 }
 
-export const news: NewsItem[] = [
+export const notices: Notice[] = [
   {
-    slug: "grant-exam-2026",
-    title: "2026–2027 оқу жылына грант: қабылдау емтиханы 4 сәуір",
-    date: "2026-03-10",
-    category: "Қабылдау",
+    slug: "admissions-open",
+    kicker: "Қабылдау",
+    title: "Оқуға қабылдау ашық",
     excerpt:
-      "7–8–9 сынып оқушылары грант негізінде оқу мүмкіндігіне ие. Қатысу үшін өтініш формасын толтыру қажет.",
-    image: "/images/hero/background1.jpg",
-    placeholder: true,
+      "Лицейге қабылдау төрт кезең арқылы өтеді: өтініш, математикадан тестілеу, сұхбат, келісім-шарт.",
+    body: [
+      "Лицейге қабылдау келесі кезеңдер арқылы жүзеге асырылады: өтінішті қабылдау бөліміне тапсыру, математика пәнінен тестілеу, оқушы және ата-анамен сұхбат, келісім-шарт жасау.",
+      "Қатысу үшін өтініш формасын толтырыңыз немесе қабылдау бөлімімен WhatsApp арқылы байланысыңыз.",
+    ],
   },
   {
-    slug: "olympiad-preparation",
-    title: "Олимпиадаға дайындық: қысқы дайындық кезеңі басталды",
-    date: "2026-02-18",
-    category: "Олимпиада",
+    slug: "grants",
+    kicker: "Гранттар",
+    title: "Дарынды оқушыларға гранттар мен жеңілдіктер",
     excerpt:
-      "Математика, физика және информатика бағыттары бойынша дайындық топтары жаңа кестемен жұмыс істейді.",
-    image: "/images/hero/background2.jpg",
-    placeholder: true,
+      "«Ақбөбек» лицейінде дарынды оқушыларға арналған гранттар мен жеңілдіктер қарастырылған.",
+    body: [
+      "Оқу ақысы айына 150 000 ₸: негізгі бағдарлама, қосымша сабақтар және күніне төрт мезгіл тамақтану кіреді.",
+      "Гранттар мен жеңілдіктер шарттарын қабылдау бөлімінен нақтылаңыз.",
+    ],
   },
   {
-    slug: "open-day",
-    title: "Ашық есік күні: лицейді өз көзіңізбен көріңіз",
-    date: "2026-02-02",
-    category: "Лицей өмірі",
+    slug: "clubs",
+    kicker: "Үйірмелер",
+    title: "IT үйірмелер: Web, Arduino, 3D-модельдеу",
     excerpt:
-      "Ата-аналар мен оқушылар кампусты, жатақхананы және зертханаларды аралап, ұстаздармен таныса алады.",
-    image: "/images/hero/background3.jpg",
-    placeholder: true,
+      "Лицейде IT бағытында үш тегін үйірме, Art Club және «Şyraq» волонтерлар қозғалысы жұмыс істейді.",
+    body: [
+      "Web-бағдарламалау: HTML, CSS және JavaScript негіздері. Arduino: робототехника және электроника. 3D-модельдеу: үш өлшемді нысандарды жобалап, басып шығару.",
+      "Бұдан бөлек шығармашылыққа арналған Art Club және «Şyraq» волонтерлар қозғалысы бар.",
+    ],
   },
   {
-    slug: "ielts-sat-results",
-    title: "IELTS және SAT дайындық топтарына жаңа қабылдау",
-    date: "2026-01-22",
-    category: "Білім беру",
+    slug: "exams",
+    kicker: "Емтихандар",
+    title: "Қабылдау емтихандарының құрылымы",
     excerpt:
-      "Жоғары сынып оқушыларына арналған халықаралық емтихандарға дайындық курстарына тіркелу ашық.",
-    image: "/images/hero/background4.jpg",
-    placeholder: true,
-  },
-  {
-    slug: "clubs-showcase",
-    title: "Үйірмелер жәрмеңкесі: Web, Arduino, 3D-модельдеу",
-    date: "2026-01-15",
-    category: "Лицей өмірі",
-    excerpt:
-      "IT бағытындағы үш тегін үйірме мен Art Club, «Şyraq» волонтерлар қозғалысы өз жұмысын таныстырды.",
-    image: "/images/hero/background5.jpg",
-    placeholder: true,
-  },
-  {
-    slug: "winter-camp",
-    title: "Қысқы математика мектебі өз мәресіне жетті",
-    date: "2025-12-28",
-    category: "Олимпиада",
-    excerpt:
-      "Қатысушылар қарқынды дайындықтан өтіп, қорытынды сынақ тапсырмаларын орындады.",
-    image: "/images/hero/background7.jpg",
-    placeholder: true,
+      "Математика — 90 минут, 30 тапсырма. Ағылшын тілі — 60 минут, 40 тапсырма. Қазақ тілі — 90 минут, 25 тапсырма.",
+    body: [
+      "Қабылдау емтиханы үш пәннен тұрады: математика (90 минут, 30 тапсырма), ағылшын тілі (60 минут, 40 тапсырма), қазақ тілі (90 минут, 25 тапсырма).",
+      "Мұқият дайындалуға кеңес береміз: сұрақтарыңыз болса, қабылдау бөліміне жазыңыз.",
+    ],
   },
 ];
 
-export function getNews(slug: string): NewsItem | undefined {
-  return news.find((n) => n.slug === slug);
-}
-
-/** dd.mm.yyyy — Kazakh date format used across the site. */
-export function formatDate(iso: string): string {
-  const [y, m, d] = iso.split("-");
-  return `${d}.${m}.${y}`;
+export function getNotice(slug: string): Notice | undefined {
+  return notices.find((n) => n.slug === slug);
 }

@@ -19,6 +19,9 @@ qa/screenshots/
 # superpowers scratch workspaces (local execution record, never commit)
 .superpowers/
 
+# playwright MCP browser artifacts
+.playwright-mcp/
+
 # next.js
 /.next/
 /out/

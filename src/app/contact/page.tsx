@@ -22,7 +22,7 @@ export default function ContactPage() {
         lead="Сұрақтарыңыз болса — қабылдау бөліміне жазыңыз немесе қоңырау шалыңыз."
       />
       <div className="bg-white">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-14 md:px-8 lg:grid-cols-12 lg:py-20">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-14 md:px-10 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <dl className="divide-y divide-line border-y border-line">
               {rows.map((row) => (

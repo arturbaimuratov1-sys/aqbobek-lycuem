@@ -12,8 +12,11 @@ interface HomeHeroProps {
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /**
- * Midnight Editorial hero: navy type panel overlapping the full-bleed
- * real graduates photo. Photo is shown uncropped (natural 16:9).
+ * Cinematic hero: the graduates photo is a background compositional layer
+ * occupying the right ~60% edge-to-edge (no card, no frame, no caption).
+ * Headline block sits on solid abyss and overlaps the image boundary.
+ * Mobile: photo becomes the full-bleed backdrop under a uniform navy veil.
+ * Faces stay visible: centered composition, controlled cover crop only.
  */
 export function HomeHero({ image, imageAlt }: HomeHeroProps) {
   const reduce = useReducedMotion();
@@ -21,84 +24,78 @@ export function HomeHero({ image, imageAlt }: HomeHeroProps) {
     reduce
       ? {}
       : {
-          initial: { opacity: 0, transform: "translateY(22px)" },
+          initial: { opacity: 0, transform: "translateY(26px)" },
           animate: { opacity: 1, transform: "translateY(0)" },
-          transition: { duration: 0.8, delay, ease: EASE },
+          transition: { duration: 0.9, delay, ease: EASE },
         };
 
   return (
-    <section className="relative overflow-hidden bg-abyss" aria-labelledby="hero-title">
-      <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 pt-28 pb-14 md:px-10 lg:grid-cols-12 lg:gap-0 lg:pt-36 lg:pb-20">
-        <div className="relative z-10 lg:col-span-6 lg:-mr-24 lg:bg-abyss lg:py-10 lg:pr-10">
+    <section
+      aria-labelledby="hero-title"
+      className="relative flex min-h-[100svh] items-center overflow-hidden bg-abyss"
+    >
+      {/* Photographic layer */}
+      <div aria-hidden="true" className="absolute inset-y-0 right-0 w-full lg:w-[62%]">
+        <Image
+          src={image}
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 62vw"
+          className="object-cover object-center"
+        />
+        {/* Uniform readability veil — solid color only, no gradients. */}
+        <div className="absolute inset-0 bg-abyss/80 lg:hidden" />
+      </div>
+
+      {/* Typography layer */}
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pt-32 pb-20 md:px-10 lg:pt-40 lg:pb-28">
+        <div className="max-w-[600px]">
           <motion.p
             {...anim(0)}
-            className="text-[11px] font-semibold uppercase tracking-[0.24em] text-frost-500"
+            className="text-[11px] font-semibold uppercase tracking-[0.28em] text-frost-500"
           >
-            Aqbobek Lyceum · Ақтөбе
+            Aqbobek Lyceum — Boarding School
           </motion.p>
           <motion.h1
-            {...anim(0.08)}
+            {...anim(0.1)}
             id="hero-title"
-            className="mt-5 font-display text-[2.4rem] leading-[1.08] font-medium text-balance text-white sm:text-6xl lg:text-[3.9rem]"
+            className="mt-6 bg-transparent font-display text-[2.7rem] leading-[1.04] font-medium text-balance text-white sm:text-7xl lg:-mr-28 lg:bg-abyss lg:py-4 lg:pr-6 lg:text-[4.6rem]"
           >
             Дарындылар мектебі — болашақ осында
           </motion.h1>
-          <motion.p {...anim(0.16)} className="mt-6 max-w-[52ch] text-[16.5px] leading-relaxed text-frost-100">
+          <span className="sr-only">{imageAlt}</span>
+          <motion.p
+            {...anim(0.2)}
+            className="mt-7 max-w-[52ch] text-[16.5px] leading-relaxed text-frost-100"
+          >
             Батыс өңірінде теңдесі жоқ, дарынды балаларға арналған IT
             бағытындағы лицей-интернат. Математика, ағылшын тілі және
             ақпараттық технологияларға басымдық.
           </motion.p>
-          <motion.div {...anim(0.24)} className="mt-9 flex flex-wrap gap-3">
+          <motion.div {...anim(0.3)} className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/admissions"
-              className="inline-flex bg-white px-7 py-3.5 text-[15px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
+              className="inline-flex bg-white px-8 py-4 text-[15px] font-semibold text-abyss transition-[background-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
             >
-              Оқуға қабылдау
+              Өтініш қалдыру
             </Link>
             <Link
               href="/about"
-              className="inline-flex border border-white/25 px-7 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
+              className="inline-flex border border-white/25 px-8 py-4 text-[15px] font-semibold text-white transition-[border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
             >
               Лицей туралы
             </Link>
           </motion.div>
-          <motion.dl
-            {...anim(0.32)}
-            className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-line-dark pt-6"
+          <motion.p
+            {...anim(0.4)}
+            className="mt-12 border-t border-line-dark pt-6 text-[13px] tracking-wide text-frost-500"
           >
-            {[
-              ["7–11", "сыныптар"],
-              ["IT", "бағыт"],
-              ["100", "жатақхана орны"],
-            ].map(([value, label]) => (
-              <div key={label} className="flex items-baseline gap-2.5">
-                <dd className="order-1 font-display text-[26px] font-medium text-white">{value}</dd>
-                <dt className="order-2 text-[13.5px] text-frost-500">{label}</dt>
-              </div>
-            ))}
-          </motion.dl>
+            7–11 сыныптар <span aria-hidden="true" className="mx-3 text-white/25">/</span> IT
+            бағыт <span aria-hidden="true" className="mx-3 text-white/25">/</span> 100
+            жатақхана орны
+          </motion.p>
         </div>
-
-        <motion.figure
-          {...anim(0.2)}
-          className="lg:col-span-6"
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            width={1672}
-            height={941}
-            priority
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="aspect-video w-full object-cover"
-          />
-          <figcaption className="flex items-center justify-between border-t border-line-dark px-1 py-3 text-[13px] text-frost-500">
-            <span>«Ақбөбек» түлектері · AL26</span>
-            <Link href="/campus" className="py-3 -my-3 font-medium text-white underline-offset-4 hover:underline">
-              Кампус →
-            </Link>
-          </figcaption>
-        </motion.figure>
       </div>
     </section>
   );

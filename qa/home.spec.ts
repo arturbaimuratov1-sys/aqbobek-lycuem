@@ -78,21 +78,21 @@ test.describe("intro loader", () => {
   });
 });
 
-test.describe("news ticker", () => {
+test.describe("news wire", () => {
   test("loops, pauses on hover, links resolve", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "networkidle" });
     await page.waitForTimeout(4500);
-    const track = page.locator(".ticker-track");
+    const track = page.locator(".wire-track").first();
     await expect(track).toBeVisible();
     const animName = await track.evaluate((el) => getComputedStyle(el).animationName);
-    expect(animName).toBe("ticker");
+    expect(animName).toBe("wire");
     // Pause on hover: hover the stable label (the track itself never settles).
-    await page.locator("section.ticker p").hover();
+    await page.locator("section[aria-label='Хабарландырулар лентасы'] p").first().hover();
     const playState = await track.evaluate((el) => getComputedStyle(el).animationPlayState);
     expect(playState).toBe("paused");
-    // First visible (non-duplicate) link navigates to an article.
-    await page.locator(".ticker-track a:not([tabindex='-1'])").first().click({ force: true });
+    // A wire link navigates to a notice detail page (wire is paused, so a real click lands).
+    await page.locator(".wire-track a").first().click();
     await expect(page).toHaveURL(/\/news\//);
   });
 });

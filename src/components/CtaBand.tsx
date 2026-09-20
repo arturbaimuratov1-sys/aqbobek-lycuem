@@ -16,7 +16,7 @@ export function CtaBand() {
               Грант негізінде оқу мүмкіндігін жіберіп алмаңыз
             </h2>
             <p className="mt-3 max-w-[60ch] text-[15.5px] leading-relaxed text-frost-100">
-              Қабылдау емтиханы — 4 сәуір. Қатысу үшін өтініш формасын толтырыңыз немесе WhatsApp арқылы жазылыңыз.
+              Қабылдау шарттарымен танысып, өтініш қалдырыңыз немесе WhatsApp арқылы жазылыңыз.
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">

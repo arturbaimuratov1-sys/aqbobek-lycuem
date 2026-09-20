@@ -11,6 +11,7 @@
 
   /* Abyss + brand navy (dark surfaces) */
   --color-abyss: #050b18;
+  --color-brand-950: #090152;
   --color-navy-950: #060f22;
   --color-navy-900: #0a1f3c;
   --color-navy-800: #123058;
@@ -40,16 +41,6 @@
   --radius-card: 0px;
 }
 
-/* Ticker loop — plain CSS so keyframes are always emitted. */
-@keyframes ticker {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -74,18 +65,25 @@ body {
   border-radius: 1px;
 }
 
-/* ————— News ticker ————— */
-.ticker-mask {
-  overflow: hidden;
-}
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 55s linear infinite;
-}
-.ticker:hover .ticker-track,
-.ticker:focus-within .ticker-track {
+/* ————— News wire (editorial marquee, Magic UI pattern adapted) ————— */
+.news-wire:hover .wire-track,
+.news-wire:focus-within .wire-track {
   animation-play-state: paused;
+}
+.wire-track {
+  animation: wire 60s linear infinite;
+  will-change: transform;
+}
+.wire-reverse {
+  animation-direction: reverse;
+}
+@keyframes wire {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 /* ————— Motion safety ————— */
@@ -93,10 +91,11 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .ticker-track {
+  .wire-track {
     animation: none;
+  }
+  .wire {
     flex-wrap: wrap;
-    width: auto;
   }
   *,
   *::before,
