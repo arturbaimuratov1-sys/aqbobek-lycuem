@@ -78,7 +78,7 @@ export default function AdmissionsPage() {
               href={site.contacts.examForm}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex bg-navy-900 px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 ease-out hover:bg-navy-800 active:scale-[0.97]"
+              className="inline-flex bg-navy-900 px-7 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-navy-800 active:scale-[0.97]"
             >
               Емтиханға тіркелу
             </a>
@@ -86,7 +86,7 @@ export default function AdmissionsPage() {
               href={site.contacts.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex border border-navy-900/25 px-7 py-3.5 text-[15px] font-semibold text-navy-900 transition-all duration-150 ease-out hover:border-navy-900 hover:bg-mist active:scale-[0.97]"
+              className="inline-flex border border-navy-900/25 px-7 py-3.5 text-[15px] font-semibold text-navy-900 transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-navy-900 hover:bg-mist active:scale-[0.97]"
             >
               WhatsApp арқылы жазу
             </a>

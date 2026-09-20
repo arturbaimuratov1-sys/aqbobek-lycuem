@@ -173,7 +173,7 @@ export default function Home() {
             />
             <Link
               href="/teachers"
-              className="inline-flex shrink-0 items-center gap-2 border border-navy-900/25 px-6 py-3 text-[14.5px] font-semibold text-navy-900 transition-all duration-150 ease-out hover:border-navy-900 hover:bg-white active:scale-[0.97]"
+              className="inline-flex shrink-0 items-center gap-2 border border-navy-900/25 px-6 py-3 text-[14.5px] font-semibold text-navy-900 transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-navy-900 hover:bg-white active:scale-[0.97]"
             >
               Барлық ұстаздар <span aria-hidden="true">→</span>
             </Link>

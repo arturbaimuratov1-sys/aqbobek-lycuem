@@ -57,7 +57,7 @@ export function SiteHeader() {
       <div id="header-sentinel" aria-hidden="true" className="h-0" />
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ease-out",
           solid
             ? "border-b border-line-dark bg-abyss/95 backdrop-blur-sm"
             : "border-b border-transparent bg-transparent",
@@ -118,7 +118,7 @@ export function SiteHeader() {
             </a>
             <Link
               href="/admissions"
-              className="hidden bg-white px-5 py-2.5 text-[13.5px] font-semibold text-abyss transition-all duration-150 ease-out hover:bg-frost-100 active:scale-[0.97] sm:inline-flex"
+              className="hidden bg-white px-5 py-2.5 text-[13.5px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97] sm:inline-flex"
             >
               Оқуға қабылдау
             </Link>

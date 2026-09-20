@@ -54,7 +54,7 @@ export default function ContactPage() {
                   href={site.contacts.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex justify-center bg-white px-6 py-3.5 text-[15px] font-semibold text-abyss transition-all duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
+                  className="inline-flex justify-center bg-white px-6 py-3.5 text-[15px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
                 >
                   WhatsApp арқылы жазу
                 </a>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                   href={site.contacts.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex justify-center border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 ease-out hover:border-white active:scale-[0.97]"
+                  className="inline-flex justify-center border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
                 >
                   Instagram — aqbobek_lyceum
                 </a>

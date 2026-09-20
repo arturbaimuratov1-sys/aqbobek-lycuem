@@ -7,7 +7,7 @@
    ———————————————————————————————————————————————— */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Unbounded", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
 
   /* Abyss + brand navy (dark surfaces) */
   --color-abyss: #050b18;
@@ -38,8 +38,6 @@
   --color-line-dark: rgba(255, 255, 255, 0.12);
 
   --radius-card: 0px;
-
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Ticker loop — plain CSS so keyframes are always emitted. */

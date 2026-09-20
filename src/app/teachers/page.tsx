@@ -61,7 +61,7 @@ export default function TeachersPage() {
               href={site.contacts.jobs}
               target="_blank"
               rel="noreferrer"
-              className="mt-5 inline-flex bg-navy-900 px-6 py-3 text-[14.5px] font-semibold text-white transition-all duration-150 ease-out hover:bg-navy-800 active:scale-[0.97]"
+              className="mt-5 inline-flex bg-navy-900 px-6 py-3 text-[14.5px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-navy-800 active:scale-[0.97]"
             >
               Ашық вакансиялар
             </a>

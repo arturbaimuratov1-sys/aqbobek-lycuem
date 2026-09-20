@@ -51,13 +51,13 @@ export function HomeHero({ image, imageAlt }: HomeHeroProps) {
           <motion.div {...anim(0.24)} className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/admissions"
-              className="inline-flex bg-white px-7 py-3.5 text-[15px] font-semibold text-abyss transition-all duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
+              className="inline-flex bg-white px-7 py-3.5 text-[15px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
             >
               Оқуға қабылдау
             </Link>
             <Link
               href="/about"
-              className="inline-flex border border-white/25 px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 ease-out hover:border-white active:scale-[0.97]"
+              className="inline-flex border border-white/25 px-7 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
             >
               Лицей туралы
             </Link>

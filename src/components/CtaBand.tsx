@@ -24,13 +24,13 @@ export function CtaBand() {
               href={site.contacts.examForm}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full justify-center bg-white px-7 py-3.5 text-[15px] font-semibold text-abyss transition-all duration-150 ease-out hover:bg-frost-100 active:scale-[0.97] lg:w-auto"
+              className="inline-flex w-full justify-center bg-white px-7 py-3.5 text-[15px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97] lg:w-auto"
             >
               Өтініш қалдыру
             </a>
             <Link
               href="/admissions"
-              className="inline-flex w-full justify-center border border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 ease-out hover:border-white active:scale-[0.97] lg:w-auto"
+              className="inline-flex w-full justify-center border border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97] lg:w-auto"
             >
               Қабылдау шарттары
             </Link>
