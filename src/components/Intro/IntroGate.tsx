@@ -98,7 +98,7 @@ export function IntroGate({ children }: { children: React.ReactNode }) {
                     width={447}
                     height={447}
                     onError={() => setLogoOk(false)}
-                    className="h-auto w-52 md:w-64"
+                    className="h-auto w-52 [mask-image:radial-gradient(closest-side,black_96%,transparent_100%)] md:w-64"
                     priority
                   />
                 ) : (

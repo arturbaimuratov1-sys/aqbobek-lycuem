@@ -11,7 +11,8 @@
 
   /* Abyss + brand navy (dark surfaces) */
   --color-abyss: #050b18;
-  --color-brand-950: #090152;
+  /* Sampled from the loader JPG edges (#08004D–#090053) so the artwork melts in. */
+  --color-brand-950: #080050;
   --color-navy-950: #060f22;
   --color-navy-900: #0a1f3c;
   --color-navy-800: #123058;
@@ -65,7 +66,20 @@ body {
   border-radius: 1px;
 }
 
-/* ————— News wire (editorial marquee, Magic UI pattern adapted) ————— */
+/* ————— Radix tabs panel entrance ————— */
+.tabs-panel[data-state="active"] {
+  animation: tabs-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes tabs-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .news-wire:hover .wire-track,
 .news-wire:focus-within .wire-track {
   animation-play-state: paused;

@@ -82,7 +82,7 @@ export function EducationTabs() {
                 <Tabs.Content
                   key={p.id}
                   value={p.id}
-                  className="border border-t-0 border-line-dark px-6 py-8 outline-none md:px-10 md:py-10"
+                  className="tabs-panel border border-t-0 border-line-dark px-6 py-8 outline-none md:px-10 md:py-10"
                 >
                   <p className="max-w-[64ch] text-[16px] leading-relaxed text-frost-100">
                     {p.lead}
