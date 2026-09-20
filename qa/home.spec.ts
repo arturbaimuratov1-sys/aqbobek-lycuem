@@ -48,6 +48,20 @@ test.describe("pages render without errors or overflow", () => {
     }
     expect(errors).toEqual([]);
   });
+
+  test("home @1280 laptop + @1024 tablet-landscape", async ({ page }) => {
+    const errors = await watchErrors(page);
+    for (const [width, height] of [[1280, 800], [1024, 768]] as const) {
+      await page.setViewportSize({ width, height });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForTimeout(4500);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(overflow, `home@${width} overflow`).toBeLessThanOrEqual(1);
+      await expect(page.locator("h1").first()).toBeVisible();
+      await page.screenshot({ path: `qa/screenshots/home-${width}.png`, fullPage: true });
+    }
+    expect(errors).toEqual([]);
+  });
 });
 
 test.describe("intro loader", () => {
@@ -84,7 +98,7 @@ test.describe("news ticker", () => {
 });
 
 test.describe("director portrait", () => {
-  test("hover/tap does not crash; missing states degrade gracefully", async ({ page }) => {
+  test("ping-pong 1→2→3→2→1, one advance per enter", async ({ page }) => {
     const errors = await watchErrors(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/", { waitUntil: "networkidle" });
@@ -92,7 +106,7 @@ test.describe("director portrait", () => {
     const portrait = page.getByRole("button", { name: /Интерактивті портрет/ });
     await portrait.scrollIntoViewIfNeeded();
     await expect(portrait).toBeVisible();
-    // Full rotation 1 → 2 → 3 → 1, one advance per pointer-enter,
+    // Full ping-pong rotation 1 → 2 → 3 → 2 → 1, one advance per pointer-enter,
     // asserted on the actual crossfade (computed opacity per state).
     const opacityOf = (n: number) =>
       page
@@ -108,12 +122,57 @@ test.describe("director portrait", () => {
     await expect.poll(() => opacityOf(3)).toBe("1");
     await away.hover();
     await portrait.hover();
+    await expect.poll(() => opacityOf(2)).toBe("1");
+    await away.hover();
+    await portrait.hover();
     await expect.poll(() => opacityOf(1)).toBe("1");
     // Layout must not shift through the sequence.
     const box = await portrait.boundingBox();
     expect(box?.width).toBeGreaterThan(200);
     expect(box?.height).toBeGreaterThan(200);
     expect(errors).toEqual([]);
+  });
+});
+
+test.describe("accessibility basics", () => {
+  test("skip link, focus visibility, menu keyboard control", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.waitForTimeout(4500);
+    // Skip link is first tab stop and jumps to main.
+    await page.keyboard.press("Tab");
+    const skip = page.getByRole("link", { name: "Негізгі мазмұнға өту" });
+    await expect(skip).toBeFocused();
+    await skip.press("Enter");
+    await expect(page).toHaveURL(/#main/);
+    // Desktop nav reachable by keyboard.
+    await page.keyboard.press("Tab");
+    // Mobile menu opens and closes via keyboard.
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.reload({ waitUntil: "networkidle" });
+    await page.waitForTimeout(4500);
+    await page.getByRole("button", { name: "Мәзірді ашу" }).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByRole("dialog", { name: "Мәзір" })).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog", { name: "Мәзір" })).toBeHidden();
+  });
+
+  test("touch targets ≥ 40px on key controls", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.waitForTimeout(4500);
+    const small = await page.evaluate(() => {
+      const bad: string[] = [];
+      document.querySelectorAll("header a, header button, main a, main button").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0 && (r.width < 40 || r.height < 40) && r.top < window.innerHeight * 3) {
+          bad.push(`${el.tagName}.${String(el.className).split(" ").slice(0, 2).join(".")}:${Math.round(r.width)}x${Math.round(r.height)}`);
+        }
+      });
+      return [...new Set(bad)].slice(0, 12);
+    });
+    expect(small).toEqual([]);
   });
 });
 

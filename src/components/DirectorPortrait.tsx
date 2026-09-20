@@ -9,26 +9,34 @@ interface DirectorPortraitProps {
 }
 
 /**
- * Three-state portrait interaction: 1 → 2 → 3 → 1 → …
+ * Ping-pong portrait interaction: 1 → 2 → 3 → 2 → 1 → …
  * Advances exactly ONCE per pointer ENTER (mouse) or tap (touch),
  * never cycles while the pointer rests on the photo.
  * Missing files degrade gracefully via onError (skipped in rotation).
  */
 export function DirectorPortrait({ portraits, alt }: DirectorPortraitProps) {
-  const [index, setIndex] = useState(0);
+  const [pos, setPos] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
   const [failed, setFailed] = useState<ReadonlySet<number>>(new Set());
 
-  const advance = useCallback(() => {
-    setIndex((current) => {
-      for (let step = 1; step <= portraits.length; step++) {
-        const next = (current + step) % portraits.length;
-        if (!failed.has(next)) return next;
-      }
-      return current;
-    });
-  }, [failed, portraits.length]);
+  const available = portraits
+    .map((_, i) => i)
+    .filter((i) => !failed.has(i));
+  const index = available[Math.min(pos, Math.max(available.length - 1, 0))] ?? 0;
 
-  const available = portraits.filter((_, i) => !failed.has(i)).length;
+  const advance = useCallback(() => {
+    const avail = portraits.map((_, i) => i).filter((i) => !failed.has(i));
+    if (avail.length < 2) return;
+    const p = Math.min(pos, avail.length - 1);
+    let d = dir;
+    let np = p + d;
+    if (np < 0 || np >= avail.length) {
+      d = (d * -1) as 1 | -1;
+      np = p + d;
+      setDir(d);
+    }
+    setPos(np);
+  }, [pos, dir, failed, portraits]);
 
   return (
     <figure className="relative">
@@ -44,8 +52,8 @@ export function DirectorPortrait({ portraits, alt }: DirectorPortraitProps) {
           // Keyboard activation (Enter/Space) carries detail === 0.
           if (e.detail === 0) advance();
         }}
-        aria-label={`${alt}. Интерактивті портрет${available > 1 ? " — басып, келесі суретті көруге болады" : ""}`}
-        className="group relative block aspect-[3/4] w-full cursor-pointer overflow-hidden rounded-card bg-navy-100 text-left"
+        aria-label={`${alt}. Интерактивті портрет${available.length > 1 ? " — басып, келесі суретті көруге болады" : ""}`}
+        className="group relative block aspect-[3/4] w-full cursor-pointer overflow-hidden rounded-card bg-steel-100 text-left"
       >
         {portraits.map((src, i) =>
           failed.has(i) ? null : (
@@ -75,26 +83,24 @@ export function DirectorPortrait({ portraits, alt }: DirectorPortraitProps) {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 border border-navy-900/10"
         />
-        {available > 1 && (
+        {available.length > 1 && (
           <span
             aria-hidden="true"
-            className="absolute right-3 bottom-3 flex gap-1.5 bg-navy-950/55 px-2.5 py-2 backdrop-blur-sm"
+            className="absolute right-3 bottom-3 flex gap-1.5 bg-abyss/55 px-2.5 py-2 backdrop-blur-sm"
           >
-            {portraits.map((src, i) =>
-              failed.has(i) ? null : (
-                <span
-                  key={src}
-                  className={`h-1 w-5 transition-colors duration-300 ${
-                    i === index ? "bg-gold-500" : "bg-white/40"
-                  }`}
-                />
-              ),
-            )}
+            {available.map((portraitIndex, position) => (
+              <span
+                key={portraits[portraitIndex]}
+                className={`h-1 w-5 transition-colors duration-300 ${
+                  position === pos ? "bg-white" : "bg-white/40"
+                }`}
+              />
+            ))}
           </span>
         )}
       </button>
       <span className="sr-only" role="status">
-        {`Сурет ${index + 1} / ${available}`}
+        {`Сурет ${Math.min(pos, Math.max(available.length - 1, 0)) + 1} / ${available.length}`}
       </span>
     </figure>
   );

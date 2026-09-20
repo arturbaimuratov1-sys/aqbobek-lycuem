@@ -1,43 +1,46 @@
 @import "tailwindcss";
 
 /* ————————————————————————————————————————————————
-   Aqbobek Lyceum design tokens (Tailwind v4 @theme)
-   Single theme: paper light + institutional navy.
-   One accent (muted gold), hairline dividers, sharp 2px radius.
+   Aqbobek Lyceum — Midnight Editorial design system
+   Deep navy + white rhythm, single steel-blue accent.
+   NO gradients. NO warm neutrals. Radius 0.
    ———————————————————————————————————————————————— */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "PT Serif", Georgia, "Times New Roman", serif;
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
 
-  /* Brand navy */
-  --color-navy-950: #050d1d;
+  /* Abyss + brand navy (dark surfaces) */
+  --color-abyss: #050b18;
+  --color-navy-950: #060f22;
   --color-navy-900: #0a1f3c;
   --color-navy-800: #123058;
   --color-navy-700: #1d4479;
-  --color-navy-200: #b9c8de;
-  --color-navy-100: #dce5f2;
-  --color-navy-50: #f0f4fa;
 
-  /* Warm neutrals */
-  --color-parchment: #f7f5f0;
-  --color-sand: #efeae0;
-  --color-line: #e4e0d6;
+  /* Cool light surfaces */
+  --color-paper: #ffffff;
+  --color-mist: #f4f6f9;
 
-  /* Single accent */
-  --color-gold-600: #a8841c;
-  --color-gold-500: #c9a227;
-  --color-gold-100: #f3ead0;
+  /* Ink + frost (text) */
+  --color-ink-900: #0b1526;
+  --color-ink-600: #3d4a61;
+  --color-ink-500: #5a6a86;
+  --color-frost-50: #f2f6fc;
+  --color-frost-100: #eaf0f8;
+  --color-frost-500: #a9bcd6;
 
-  /* Ink */
-  --color-ink-900: #131a26;
-  --color-ink-600: #3e4756;
-  --color-ink-500: #5b6474;
+  /* Single restrained accent */
+  --color-steel-600: #355fc0;
+  --color-steel-500: #3e6fd1;
+  --color-steel-100: #e3ebfa;
 
-  --radius-card: 2px;
+  /* Hairlines */
+  --color-line: #e2e7ef;
+  --color-line-dark: rgba(255, 255, 255, 0.12);
+
+  --radius-card: 0px;
 }
 
-/* Ticker loop — plain CSS (outside @theme) so the keyframes are always
-   emitted; the animation runs off the main thread. */
+/* Ticker loop — plain CSS so keyframes are always emitted. */
 @keyframes ticker {
   from {
     transform: translateX(0);
@@ -52,7 +55,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background: var(--color-paper);
   color: var(--color-ink-900);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -66,7 +69,7 @@ body {
 
 /* Visible, consistent keyboard focus everywhere */
 :focus-visible {
-  outline: 2px solid var(--color-gold-600);
+  outline: 2px solid var(--color-steel-500);
   outline-offset: 3px;
   border-radius: 1px;
 }

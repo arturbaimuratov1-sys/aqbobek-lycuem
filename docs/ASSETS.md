@@ -19,7 +19,7 @@ dark surfaces. If the real logo is light-on-dark instead, remove the
 
 | File | Status | To provide |
 |---|---|---|
-| `public/brand/aqbobek-lyceum-logo.png` | 🟡 PLACEHOLDER (transparent, navy «Ақбөбек / AQBOBEK LYCEUM») | master logo PNG (transparent, ≥960px wide) |
+| `public/brand/aqbobek-lyceum-loader-logo.jpg` | ✅ REAL official logo (447×447, verified visually) — used in intro, header, footer | — |
 
 ## Director portraits (hover sequence 1 → 2 → 3 → 1)
 
@@ -33,7 +33,8 @@ dark surfaces. If the real logo is light-on-dark instead, remove the
 
 | Files | Status | To provide |
 |---|---|---|
-| `public/images/hero/background1.jpg … background10.jpg` (1200×900; `background6.jpeg`) | 🟡 PLACEHOLDER | real campus/classroom/event photos (4:3, ≥1600px) |
+| `public/images/hero/aqbobek-students-hero.png` (1672×941) | ✅ REAL graduates photo (verified visually, uncropped in hero) | — |
+| `public/images/hero/background*.jpg` (1200×900) | 🟡 PLACEHOLDER (news/campus filler) | real campus/classroom/event photos (4:3, ≥1600px) |
 | `public/images/teachers/<id>.jpg` × 28 (600×800, initials) | 🟡 PLACEHOLDER | real staff portraits (3:4, ≥800px) |
 
 Teacher file ids: kaiyrkulov_n, karayeva_a, baidirahmanova_b, dushmanova_a,

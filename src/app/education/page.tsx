@@ -18,10 +18,10 @@ export default function EducationPage() {
       />
 
       {programmes.map((p, pi) => (
-        <section key={p.id} aria-labelledby={`prog-${p.id}`} className={pi % 2 === 0 ? "bg-white" : "border-y border-line bg-parchment"}>
+        <section key={p.id} aria-labelledby={`prog-${p.id}`} className={pi % 2 === 0 ? "bg-white" : "border-y border-line bg-mist"}>
           <div className="mx-auto grid max-w-[1400px] gap-8 px-5 py-14 md:px-8 lg:grid-cols-12 lg:py-20">
             <div className="lg:col-span-4">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-600">{p.stage}</p>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-steel-600">{p.stage}</p>
               <h2 id={`prog-${p.id}`} className="mt-2 font-display text-3xl text-navy-900 md:text-4xl">
                 {p.title}
               </h2>
@@ -33,7 +33,7 @@ export default function EducationPage() {
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {p.points.map((point) => (
                   <li key={point} className="flex gap-4 py-4 text-[15.5px] leading-relaxed text-ink-900">
-                    <span aria-hidden="true" className="mt-[10px] h-1.5 w-1.5 shrink-0 bg-gold-500" />
+                    <span aria-hidden="true" className="mt-[10px] h-1.5 w-1.5 shrink-0 bg-steel-600" />
                     {point}
                   </li>
                 ))}
@@ -58,7 +58,7 @@ export default function EducationPage() {
             ))}
             <Reveal className="bg-navy-900 p-8">
               <dt className="font-display text-xl text-white">Бағыттар</dt>
-              <dd className="mt-2 text-[14.5px] leading-relaxed text-navy-100">
+              <dd className="mt-2 text-[14.5px] leading-relaxed text-frost-100">
                 {programmeSubjects.join(" · ")}
               </dd>
             </Reveal>

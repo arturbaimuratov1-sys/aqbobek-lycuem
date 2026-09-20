@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, PT_Serif } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { IntroGate } from "@/components/Intro/IntroGate";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,9 +11,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const ptSerif = PT_Serif({
+const lora = Lora({
   variable: "--font-display",
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   subsets: ["latin", "cyrillic", "cyrillic-ext"],
   display: "swap",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="kk" className={`${inter.variable} ${ptSerif.variable} h-full antialiased`}>
+    <html lang="kk" className={`${inter.variable} ${lora.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink-900">
         <a
           href="#main"

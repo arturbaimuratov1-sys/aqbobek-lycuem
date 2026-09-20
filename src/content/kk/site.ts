@@ -16,7 +16,7 @@ export const site = {
     qualifier: "Лицей",
     full: "«Ақбөбек» лицейі",
     latin: "Aqbobek Lyceum",
-    logo: "/brand/aqbobek-lyceum-logo.png",
+    logo: "/brand/aqbobek-lyceum-loader-logo.jpg",
   },
   tagline:
     "Батыс өңірінде теңдесі жоқ, дарынды балаларға арналған IT бағытындағы лицей-интернат",

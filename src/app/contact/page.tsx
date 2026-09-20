@@ -46,7 +46,7 @@ export default function ContactPage() {
           <Reveal className="lg:col-span-5">
             <div className="bg-navy-900 p-8 md:p-10">
               <h2 className="font-display text-2xl text-white">Тікелей байланыс</h2>
-              <p className="mt-3 text-[15px] leading-relaxed text-navy-100">
+              <p className="mt-3 text-[15px] leading-relaxed text-frost-100">
                 Лицейге қабылдау шарттарын нақтылағыңыз келсе — WhatsApp арқылы жазыңыз, жауап береміз.
               </p>
               <div className="mt-6 flex flex-col gap-3">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   href={site.contacts.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex justify-center bg-gold-500 px-6 py-3.5 text-[15px] font-semibold text-navy-950 transition-all duration-150 ease-out hover:bg-white active:scale-[0.97]"
+                  className="inline-flex justify-center bg-white px-6 py-3.5 text-[15px] font-semibold text-abyss transition-[background-color,border-color,color,transform] duration-150 ease-out hover:bg-frost-100 active:scale-[0.97]"
                 >
                   WhatsApp арқылы жазу
                 </a>
@@ -62,7 +62,7 @@ export default function ContactPage() {
                   href={site.contacts.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex justify-center border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 ease-out hover:border-white active:scale-[0.97]"
+                  className="inline-flex justify-center border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-[background-color,border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
                 >
                   Instagram — aqbobek_lyceum
                 </a>

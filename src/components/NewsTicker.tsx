@@ -21,14 +21,14 @@ export function NewsTicker({ items }: NewsTickerProps) {
             tabIndex={hidden ? -1 : undefined}
             className="group flex items-baseline gap-3 px-6 py-3.5 text-[15px] whitespace-nowrap text-white/90 transition-colors duration-150 ease-out hover:text-white"
           >
-            <span className="shrink-0 text-[13px] font-medium tabular-nums text-gold-500">
+            <span className="shrink-0 text-[13px] font-medium tabular-nums text-frost-500">
               {formatDate(item.date)}
             </span>
             <span className="underline-offset-4 group-hover:underline">
               {item.title}
             </span>
           </Link>
-          <span aria-hidden="true" className="text-gold-500/70">
+          <span aria-hidden="true" className="text-steel-500">
             →
           </span>
         </span>
@@ -37,14 +37,14 @@ export function NewsTicker({ items }: NewsTickerProps) {
   );
 
   return (
-    <section aria-label="Соңғы жаңалықтар" className="ticker bg-navy-950">
-      <div className="mx-auto flex max-w-[1400px] items-stretch">
-        <div className="flex shrink-0 items-center gap-2.5 border-r border-white/10 px-5 py-3.5 md:px-8">
+    <section aria-label="Соңғы жаңалықтар" className="ticker bg-abyss">
+      <div className="mx-auto flex max-w-[1440px] items-stretch">
+        <div className="flex shrink-0 items-center gap-2.5 border-r border-line-dark px-5 py-3.5 md:px-8">
           <span aria-hidden="true" className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-500 opacity-60 motion-reduce:hidden" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-steel-500 opacity-60 motion-reduce:hidden" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-steel-500" />
           </span>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
             Жаңалықтар
           </p>
         </div>
@@ -56,7 +56,7 @@ export function NewsTicker({ items }: NewsTickerProps) {
         </div>
         <Link
           href="/news"
-          className="hidden shrink-0 items-center border-l border-white/10 px-6 text-[13px] font-medium text-white/70 transition-colors duration-150 ease-out hover:text-white sm:flex"
+          className="hidden shrink-0 items-center border-l border-line-dark px-6 text-[13px] font-medium text-white/70 transition-colors duration-150 ease-out hover:text-white sm:flex"
         >
           Барлығы →
         </Link>

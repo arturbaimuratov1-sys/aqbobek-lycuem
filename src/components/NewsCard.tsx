@@ -21,7 +21,7 @@ export function NewsCard({ item }: { item: NewsItem }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <p className="text-[12px] font-medium tracking-wide text-ink-500">
-          <span className="text-gold-600">{item.category}</span>
+          <span className="text-steel-600">{item.category}</span>
           <span aria-hidden="true"> · </span>
           <time dateTime={item.date}>{formatDate(item.date)}</time>
         </p>

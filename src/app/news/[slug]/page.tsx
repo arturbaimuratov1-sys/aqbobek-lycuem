@@ -41,14 +41,14 @@ export default async function NewsArticlePage({
           ← Барлық жаңалықтар
         </Link>
         <p className="mt-6 text-[13px] font-medium tracking-wide text-ink-500">
-          <span className="text-gold-600">{item.category}</span>
+          <span className="text-steel-600">{item.category}</span>
           <span aria-hidden="true"> · </span>
           <time dateTime={item.date}>{formatDate(item.date)}</time>
         </p>
         <h1 className="mt-3 font-display text-3xl leading-tight text-balance text-navy-900 md:text-[2.75rem] md:leading-[1.15]">
           {item.title}
         </h1>
-        <p className="mt-5 border border-line bg-parchment p-5 text-[16.5px] leading-relaxed text-ink-900">
+        <p className="mt-5 border border-line bg-mist p-5 text-[16.5px] leading-relaxed text-ink-900">
           {item.excerpt}
         </p>
       </div>
@@ -67,7 +67,7 @@ export default async function NewsArticlePage({
       )}
 
       <div className="mx-auto max-w-3xl px-5 py-10">
-        <Reveal className="border border-line bg-parchment p-6 text-[14px] leading-relaxed text-ink-600">
+        <Reveal className="border border-line bg-mist p-6 text-[14px] leading-relaxed text-ink-600">
           Бұл — толтырғыш мақала. Нақты редакциялық мәтін CMS қосылғанда осы жерде жарияланады.
           Толық ақпарат үшін қабылдау бөліміне хабарласыңыз.
         </Reveal>
