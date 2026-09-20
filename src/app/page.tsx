@@ -11,6 +11,7 @@ import { TeacherCard } from "@/components/TeacherCard";
 import { director } from "@/content/kk/director";
 import { campusFacilities } from "@/content/kk/campus";
 import { clubs, programmes } from "@/content/kk/programs";
+import { formatDate } from "@/content/kk/news";
 import { homeNews } from "@/lib/home-news";
 import { stats, whyLyceum } from "@/content/kk/home";
 import { featuredTeachers } from "@/content/kk/teachers";
@@ -87,7 +88,7 @@ export default function Home() {
           <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-10">
             {programmes.map((p, i) => (
               <Reveal key={p.id} delay={i * 0.08} className="border-t border-line-dark pt-8">
-                <p aria-hidden="true" className="font-display text-6xl font-semibold text-white/15 md:text-7xl">
+                <p aria-hidden="true" className="font-display text-[2.6rem] leading-none font-semibold text-white/15 md:text-7xl">
                   {p.stage}
                 </p>
                 <h3 className="mt-4 font-display text-2xl font-medium text-white">{p.title}</h3>
@@ -163,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Teachers */}
-      <section aria-labelledby="teachers-title" className="border-t border-line bg-parchment">
+      <section aria-labelledby="teachers-title" className="border-t border-line bg-mist">
         <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -187,51 +188,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Campus teaser */}
-      <section aria-labelledby="campus-title" className="bg-white">
-        <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-5 py-16 md:px-8 lg:grid-cols-12 lg:gap-14 lg:py-24">
-          <Reveal className="lg:col-span-6">
-            <figure>
-              <Image
-                src="/images/hero/background2.jpg"
-                alt="Лицей кампусы"
-                width={1200}
-                height={800}
-                loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="aspect-[3/2] w-full object-cover"
-              />
-              <figcaption className="mt-3 text-[13px] text-ink-500">
-                Заманауи кабинеттер, компьютерлік сыныптар, спорт инфрақұрылымы
-              </figcaption>
-            </figure>
-          </Reveal>
-          <div className="lg:col-span-6">
-            <SectionHeading
-              title={<span id="campus-title">Оқу мен өмірге қолайлы кампус</span>}
-              lead="Заманауи кампус студенттердің оқуы мен өмір сүруіне барлық жағдай жасайды."
-            />
-            <ul className="mt-8 divide-y divide-line border-y border-line">
-              {campusFacilities.slice(0, 4).map((f) => (
-                <li key={f.title} className="flex items-baseline justify-between gap-4 py-4">
-                  <span className="font-display text-lg text-navy-900">{f.title}</span>
-                  <span className="text-right text-[14px] text-ink-500">{f.text}</span>
-                </li>
+      {/* Campus — typographic facility index (photo slots reserved for official imagery) */}
+      <section aria-labelledby="campus-title" className="bg-paper">
+        <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-10 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="lg:sticky lg:top-32">
+                <SectionHeading
+                  title={<span id="campus-title">Оқу мен өмірге қолайлы кампус</span>}
+                  lead="Заманауи кампус студенттердің оқуы мен өмір сүруіне барлық жағдай жасайды."
+                />
+                <Link
+                  href="/campus"
+                  className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
+                >
+                  Кампус туралы толығырақ <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+            <dl className="grid sm:grid-cols-2 lg:col-span-8">
+              {campusFacilities.map((f, i) => (
+                <Reveal
+                  key={f.title}
+                  delay={Math.min(i * 0.05, 0.15)}
+                  className="border-t border-ink-900/10 px-2 py-7 sm:px-6 sm:[&:nth-child(odd)]:border-r sm:[&:nth-child(odd)]:pr-6 sm:[&:nth-child(even)]:pl-6 [&:last-child]:border-b sm:[&:nth-last-child(2)]:border-b"
+                >
+                  <dt className="font-display text-[22px] font-medium text-navy-900">{f.title}</dt>
+                  <dd className="mt-2 text-[14.5px] leading-relaxed text-ink-600">{f.text}</dd>
+                </Reveal>
               ))}
-            </ul>
-            <Link
-              href="/campus"
-              className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
-            >
-              Кампус туралы толығырақ <span aria-hidden="true">→</span>
-            </Link>
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* Latest news */}
-      <section aria-labelledby="news-title" className="border-t border-line bg-parchment">
-        <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
+      {/* Latest news — 1 major + 2 secondary */}
+      <section aria-labelledby="news-title" className="border-t border-line bg-mist">
+        <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-10 lg:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading title={<span id="news-title">Соңғы жаңалықтар</span>} />
             <Link
@@ -241,13 +234,51 @@ export default function Home() {
               Барлық жаңалықтар <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {homeNews.slice(0, 3).map((item, i) => (
-              <Reveal key={item.slug} delay={Math.min(i * 0.07, 0.15)} className="h-full">
-                <NewsCard item={item} />
-              </Reveal>
-            ))}
-          </div>
+          {(() => {
+            const [major, ...rest] = homeNews.slice(0, 3);
+            if (!major) return null;
+            return (
+              <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
+                <Reveal>
+                  <article className="group flex flex-col border border-line bg-paper">
+                    {major.image && (
+                      <div className="overflow-hidden">
+                        <Image
+                          src={major.image}
+                          alt=""
+                          width={1000}
+                          height={560}
+                          loading="lazy"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+                        />
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-7 md:p-9">
+                      <p className="text-[12px] font-medium tracking-wide text-ink-500">
+                        <span className="text-steel-600">{major.category}</span>
+                        <span aria-hidden="true"> · </span>
+                        <time dateTime={major.date}>{formatDate(major.date)}</time>
+                      </p>
+                      <h3 className="mt-3 font-display text-2xl leading-snug font-medium text-balance text-navy-900 md:text-[1.7rem]">
+                        <Link href={`/news/${major.slug}`} className="underline-offset-4 group-hover:underline">
+                          {major.title}
+                        </Link>
+                      </h3>
+                      <p className="mt-3 max-w-[62ch] flex-1 text-[15px] leading-relaxed text-ink-600">{major.excerpt}</p>
+                    </div>
+                  </article>
+                </Reveal>
+                <div className="grid gap-6">
+                  {rest.map((item, i) => (
+                    <Reveal key={item.slug} delay={Math.min(i * 0.07, 0.15)} className="h-full">
+                      <NewsCard item={item} />
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 

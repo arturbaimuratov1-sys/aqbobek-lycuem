@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 interface RevealProps {
   children: ReactNode;
@@ -17,14 +18,15 @@ interface RevealProps {
  */
 export function Reveal({ children, delay = 0, className, as = "div" }: RevealProps) {
   const reduce = useReducedMotion();
+  // min-w-0 prevents grid/flex blowout when Reveal wraps media content.
   if (reduce) {
     const Tag = as as "div";
-    return <Tag className={className}>{children}</Tag>;
+    return <Tag className={cn("min-w-0", className)}>{children}</Tag>;
   }
   const MotionTag = motion[as] as typeof motion.div;
   return (
     <MotionTag
-      className={className}
+      className={cn("min-w-0", className)}
       initial={{ opacity: 0, transform: "translateY(16px)" }}
       whileInView={{ opacity: 1, transform: "translateY(0px)" }}
       viewport={{ once: true, amount: 0.25 }}

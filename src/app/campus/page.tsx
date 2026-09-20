@@ -46,7 +46,7 @@ export default function CampusPage() {
         </div>
       </section>
 
-      <section aria-label="Тамақтану және көлік" className="border-y border-line bg-parchment">
+      <section aria-label="Тамақтану және көлік" className="border-y border-line bg-mist">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-14 md:grid-cols-2 md:px-8 lg:py-20">
           <Reveal>
             <h2 className="font-display text-2xl text-navy-900">Тамақтану</h2>
@@ -71,7 +71,7 @@ export default function CampusPage() {
                 key={`${item.time}-${item.label}`}
                 className="flex items-baseline gap-5 border-t border-line py-3.5 last:border-b md:[&:nth-last-child(2)]:border-b"
               >
-                <span className="w-14 shrink-0 font-display text-[17px] tabular-nums text-gold-600">{item.time}</span>
+                <span className="w-14 shrink-0 font-display text-[17px] tabular-nums text-steel-600">{item.time}</span>
                 <span className="text-[15px] text-ink-900">{item.label}</span>
               </li>
             ))}

@@ -53,7 +53,7 @@ export function DirectorPortrait({ portraits, alt }: DirectorPortraitProps) {
           if (e.detail === 0) advance();
         }}
         aria-label={`${alt}. Интерактивті портрет${available.length > 1 ? " — басып, келесі суретті көруге болады" : ""}`}
-        className="group relative block aspect-[3/4] w-full cursor-pointer overflow-hidden rounded-card bg-navy-100 text-left"
+        className="group relative block aspect-[3/4] w-full cursor-pointer overflow-hidden rounded-card bg-steel-100 text-left"
       >
         {portraits.map((src, i) =>
           failed.has(i) ? null : (

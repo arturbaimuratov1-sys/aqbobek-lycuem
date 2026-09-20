@@ -23,7 +23,7 @@ export default function AdmissionsPage() {
           <ol className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {admissionSteps.map((step, i) => (
               <Reveal key={step.title} delay={Math.min(i * 0.06, 0.18)} className="bg-white p-8">
-                <p aria-hidden="true" className="font-display text-4xl text-gold-500">{i + 1}</p>
+                <p aria-hidden="true" className="font-display text-4xl text-steel-600">{i + 1}</p>
                 <h3 className="mt-3 font-display text-xl text-navy-900">{step.title}</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-ink-600">{step.text}</p>
               </Reveal>
@@ -32,7 +32,7 @@ export default function AdmissionsPage() {
         </div>
       </section>
 
-      <section aria-labelledby="tuition" className="border-y border-line bg-parchment">
+      <section aria-labelledby="tuition" className="border-y border-line bg-mist">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-14 md:px-8 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-5">
             <SectionHeading title={<span id="tuition">Оқу ақысы</span>} />
@@ -51,7 +51,7 @@ export default function AdmissionsPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 bg-gold-100 px-5 py-4 text-[15px] leading-relaxed text-ink-900">
+              <p className="mt-5 bg-steel-100 px-5 py-4 text-[15px] leading-relaxed text-ink-900">
                 {tuition.grantsNote}
               </p>
             </Reveal>
@@ -86,7 +86,7 @@ export default function AdmissionsPage() {
               href={site.contacts.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex border border-navy-900/25 px-7 py-3.5 text-[15px] font-semibold text-navy-900 transition-all duration-150 ease-out hover:border-navy-900 hover:bg-navy-50 active:scale-[0.97]"
+              className="inline-flex border border-navy-900/25 px-7 py-3.5 text-[15px] font-semibold text-navy-900 transition-all duration-150 ease-out hover:border-navy-900 hover:bg-mist active:scale-[0.97]"
             >
               WhatsApp арқылы жазу
             </a>

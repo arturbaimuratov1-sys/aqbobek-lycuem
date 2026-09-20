@@ -50,7 +50,7 @@ export default function TeachersPage() {
           <Group title="Әкімшілік" ids={["baidirahmanova_b", "dushmanova_a", "kopzhasarova_t", "maratkyzy_d"]} />
           <Group title="Кураторлар" ids={["kydyrbayeva_g", "sharafadinova_a", "zhomartova_a", "khalelova_a", "salamatuly_a"]} />
 
-          <Reveal className="mt-16 border border-line bg-parchment p-8 md:p-10">
+          <Reveal className="mt-16 border border-line bg-mist p-8 md:p-10">
             <h2 className="font-display text-2xl text-navy-900">Біздің командаға қосылыңыз</h2>
             <p className="mt-3 max-w-[68ch] text-[15px] leading-relaxed text-ink-600">
               Математика, ағылшын тілі, информатика мұғалімдерін, кураторлар мен әкімшілік

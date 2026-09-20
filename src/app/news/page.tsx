@@ -23,7 +23,7 @@ export default function NewsPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-10 border border-line bg-parchment p-6 text-[13.5px] leading-relaxed text-ink-500">
+          <Reveal className="mt-10 border border-line bg-mist p-6 text-[13.5px] leading-relaxed text-ink-500">
             Ескерту: бұл бөлімдегі материалдар — құрылымды толтырғыш (placeholder). Нақты
             редакциялық мазмұн немесе CMS қосылғанда осы деректер ауыстырылады.
           </Reveal>
