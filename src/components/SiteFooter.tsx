@@ -14,7 +14,7 @@ export function SiteFooter() {
               alt={`${site.brand.latin} логотипі`}
               width={140}
               height={56}
-              className="h-12 w-auto"
+              className="h-12 w-auto outline outline-1 outline-white/15 outline-offset-4"
             />
             <div className="flex flex-col leading-tight">
               <span className="font-display text-[15px] font-medium">{site.brand.full}</span>

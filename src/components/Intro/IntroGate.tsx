@@ -82,7 +82,7 @@ export function IntroGate({ children }: { children: React.ReactNode }) {
             key="intro"
             role="status"
             aria-label="Aqbobek Lyceum"
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-navy-950"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-abyss"
             exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } }}
           >
             <div className="flex flex-col items-center px-6 text-center">
@@ -92,15 +92,17 @@ export function IntroGate({ children }: { children: React.ReactNode }) {
                 transition={{ duration: 0.9, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
               >
                 {logoOk ? (
-                  <Image
-                    src={site.brand.logo}
-                    alt={site.brand.latin}
-                    width={220}
-                    height={120}
-                    onError={() => setLogoOk(false)}
-                    className="h-auto w-44 brightness-0 invert md:w-56"
-                    priority
-                  />
+                  <span className="block border border-white/15">
+                    <Image
+                      src={site.brand.logo}
+                      alt={site.brand.latin}
+                      width={447}
+                      height={447}
+                      onError={() => setLogoOk(false)}
+                      className="h-auto w-40 md:w-48"
+                      priority
+                    />
+                  </span>
                 ) : (
                   <p className="font-display text-4xl text-white md:text-5xl">
                     Ақбөбек
@@ -109,7 +111,7 @@ export function IntroGate({ children }: { children: React.ReactNode }) {
               </motion.div>
               <motion.div
                 aria-hidden="true"
-                className="mt-7 h-px w-40 origin-center bg-gold-500"
+                className="mt-7 h-px w-40 origin-center bg-white/70"
                 initial={{ opacity: 0, transform: "scaleX(0)" }}
                 animate={{ opacity: 1, transform: "scaleX(1)" }}
                 transition={{ duration: 1.1, delay: 1.0, ease: [0.23, 1, 0.32, 1] }}

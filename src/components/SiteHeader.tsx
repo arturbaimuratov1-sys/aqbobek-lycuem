@@ -70,7 +70,7 @@ export function SiteHeader() {
               alt=""
               width={160}
               height={64}
-              className="h-9 w-auto md:h-11"
+              className="h-9 w-auto outline outline-1 outline-white/15 outline-offset-4 md:h-11"
               priority
             />
             <span className="hidden flex-col leading-tight sm:flex">
