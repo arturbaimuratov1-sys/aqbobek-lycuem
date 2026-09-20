@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <>
       <HomeHero
-        image="/images/hero/aqbobek-students-hero.png"
-        imageAlt="«Ақбөбек» лицейінің түлектері — AL26"
+        image="/images/hero/aqbobek-students-hero-clean.png"
+        imageAlt="«Ақбөбек» лицейінің түлектері"
       />
 
       {/* 03 — Proof rail */}

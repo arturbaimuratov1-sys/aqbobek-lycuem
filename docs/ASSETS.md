@@ -25,15 +25,15 @@ dark surfaces. If the real logo is light-on-dark instead, remove the
 
 | File | Status | To provide |
 |---|---|---|
-| `public/director/director-1.jpg` | 🟡 PLACEHOLDER (800×1067) | official portrait 1 (3:4) |
-| `public/director/director-2.jpg` | ❌ MISSING (skipped gracefully by component) | official portrait 2 (3:4) |
-| `public/director/director-3.jpg` | ❌ MISSING (skipped gracefully by component) | official portrait 3 (3:4) |
+| `public/director/director-1.jpg` | ✅ REAL portrait (1017×678, verified visually) | — |
+| `public/director/director-2.jpg` | ❌ MISSING — component gracefully degrades to 1↔3; full 1→2→3→2→1 test restores on arrival | official portrait 2 (3:4) |
+| `public/director/director-3.jpg` | ✅ REAL portrait (489×627, verified visually) | — |
 
 ## Photography (all placeholders, correct aspect)
 
 | Files | Status | To provide |
 |---|---|---|
-| `public/images/hero/aqbobek-students-hero.png` (1672×941) | ✅ REAL graduates photo (verified visually, uncropped in hero) | — |
+| `public/images/hero/aqbobek-students-hero-clean.png` (1672×941) | ✅ REAL clean graduates photo (verified visually, uncropped hero layer) | — |
 | `public/images/hero/background*.jpg` (1200×900) | 🟡 PLACEHOLDER (news/campus filler) | real campus/classroom/event photos (4:3, ≥1600px) |
 | `public/images/teachers/<id>.jpg` × 28 (600×800, initials) | 🟡 PLACEHOLDER | real staff portraits (3:4, ≥800px) |
 
