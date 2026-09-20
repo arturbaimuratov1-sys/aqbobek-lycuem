@@ -26,25 +26,6 @@ export default function Home() {
         imageAlt="«Ақбөбек» лицейінің түлектері"
       />
 
-      {/* 03 — Proof rail */}
-      <section aria-label="Лицей деректері" className="border-b border-line bg-paper">
-        <dl className="mx-auto flex max-w-[1440px] flex-wrap items-baseline gap-x-12 gap-y-3 px-5 py-5 md:px-10">
-          {[
-            ["7–11", "сыныптар"],
-            ["IT", "бағыт"],
-            ["100", "жатақхана орны"],
-          ].map(([value, label]) => (
-            <div key={label} className="flex items-baseline gap-2.5">
-              <dd className="font-display text-xl font-medium text-navy-900">{value}</dd>
-              <dt className="text-[13px] text-ink-500">{label}</dt>
-            </div>
-          ))}
-          <p className="ml-auto hidden text-[12px] uppercase tracking-[0.2em] text-ink-500 lg:block">
-            Boarding Lyceum · Aktobe
-          </p>
-        </dl>
-      </section>
-
       {/* 04 — Manifesto */}
       <Manifesto />
 

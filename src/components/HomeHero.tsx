@@ -12,11 +12,11 @@ interface HomeHeroProps {
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /**
- * Cinematic hero: the graduates photo is a background compositional layer
- * occupying the right ~60% edge-to-edge (no card, no frame, no caption).
- * Headline block sits on solid abyss and overlaps the image boundary.
- * Mobile: photo becomes the full-bleed backdrop under a uniform navy veil.
- * Faces stay visible: centered composition, controlled cover crop only.
+ * Full-bleed cinematic hero: the graduates photo covers the whole first
+ * screen as a background layer (no card, no frame, no caption).
+ * Typography sits directly on the image over a subtle readability scrim;
+ * the text area itself is fully transparent. Faces stay visible via
+ * center-aware object positioning per breakpoint.
  */
 export function HomeHero({ image, imageAlt }: HomeHeroProps) {
   const reduce = useReducedMotion();
@@ -32,39 +32,40 @@ export function HomeHero({ image, imageAlt }: HomeHeroProps) {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-abyss"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-abyss"
     >
-      {/* Photographic layer */}
-      <div aria-hidden="true" className="absolute inset-y-0 right-0 w-full lg:w-[62%]">
+      {/* Photographic layer — true full background */}
+      <div aria-hidden="true" className="absolute inset-0">
         <Image
           src={image}
           alt=""
           fill
           priority
-          sizes="(max-width: 1024px) 100vw, 62vw"
-          className="object-cover object-center"
+          sizes="100vw"
+          className="object-cover object-[50%_30%] lg:object-center"
         />
-        {/* Uniform readability veil — solid color only, no gradients. */}
-        <div className="absolute inset-0 bg-abyss/80 lg:hidden" />
+        {/* Readability scrims — subtle, no cheap gradient look. */}
+        <div className="absolute inset-0 bg-abyss/55 lg:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-r from-abyss/90 via-abyss/45 to-abyss/10" />
       </div>
+      <span className="sr-only">{imageAlt}</span>
 
-      {/* Typography layer */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pt-32 pb-20 md:px-10 lg:pt-40 lg:pb-28">
-        <div className="max-w-[600px]">
+      {/* Typography layer — transparent background */}
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pt-36 pb-10 md:px-10 lg:pb-14">
+        <div className="max-w-[640px]">
           <motion.p
             {...anim(0)}
-            className="text-[11px] font-semibold uppercase tracking-[0.28em] text-frost-500"
+            className="text-[11px] font-semibold uppercase tracking-[0.28em] text-frost-100"
           >
             Aqbobek Lyceum — Boarding School
           </motion.p>
           <motion.h1
             {...anim(0.1)}
             id="hero-title"
-            className="mt-6 bg-transparent font-display text-[2.7rem] leading-[1.04] font-medium text-balance text-white sm:text-7xl lg:-mr-28 lg:bg-abyss lg:py-4 lg:pr-6 lg:text-[4.6rem]"
+            className="mt-6 font-display text-[2.7rem] leading-[1.04] font-medium text-balance text-white sm:text-7xl lg:text-[4.6rem]"
           >
             Дарындылар мектебі — болашақ осында
           </motion.h1>
-          <span className="sr-only">{imageAlt}</span>
           <motion.p
             {...anim(0.2)}
             className="mt-7 max-w-[52ch] text-[16.5px] leading-relaxed text-frost-100"
@@ -82,20 +83,32 @@ export function HomeHero({ image, imageAlt }: HomeHeroProps) {
             </Link>
             <Link
               href="/about"
-              className="inline-flex border border-white/25 px-8 py-4 text-[15px] font-semibold text-white transition-[border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
+              className="inline-flex border border-white/30 px-8 py-4 text-[15px] font-semibold text-white transition-[border-color,color,transform] duration-150 ease-out hover:border-white active:scale-[0.97]"
             >
               Лицей туралы
             </Link>
           </motion.div>
-          <motion.p
-            {...anim(0.4)}
-            className="mt-12 border-t border-line-dark pt-6 text-[13px] tracking-wide text-frost-500"
-          >
-            7–11 сыныптар <span aria-hidden="true" className="mx-3 text-white/25">/</span> IT
-            бағыт <span aria-hidden="true" className="mx-3 text-white/25">/</span> 100
-            жатақхана орны
-          </motion.p>
         </div>
+
+        {/* Proof bar — integrated into the hero, not a separate section */}
+        <motion.dl
+          {...anim(0.4)}
+          className="mt-14 flex flex-wrap gap-x-12 gap-y-3 border-t border-white/15 pt-6"
+        >
+          {[
+            ["7–11", "сыныптар"],
+            ["IT", "бағыт"],
+            ["100", "жатақхана орны"],
+          ].map(([value, label]) => (
+            <div key={label} className="flex items-baseline gap-2.5">
+              <dd className="font-display text-[22px] font-medium text-white">{value}</dd>
+              <dt className="text-[13px] text-frost-100">{label}</dt>
+            </div>
+          ))}
+          <p className="ml-auto hidden self-center text-[11px] uppercase tracking-[0.24em] text-frost-100/70 lg:block">
+            Boarding Lyceum · Aktobe
+          </p>
+        </motion.dl>
       </div>
     </section>
   );
