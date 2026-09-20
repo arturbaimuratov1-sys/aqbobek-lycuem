@@ -5,33 +5,33 @@ import { programmeSubjects } from "@/content/kk/programs";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy-950 text-white">
-      <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-14 md:grid-cols-2 md:px-8 lg:grid-cols-[1.3fr_1fr_1fr_1.1fr] lg:py-16">
+    <footer className="bg-abyss text-white">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 md:grid-cols-2 md:px-10 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:py-20">
         <div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Image
               src={site.brand.logo}
               alt={`${site.brand.latin} логотипі`}
-              width={120}
-              height={44}
-              className="h-10 w-auto brightness-0 invert"
+              width={140}
+              height={56}
+              className="h-12 w-auto"
             />
             <div className="flex flex-col leading-tight">
-              <span className="font-display text-[17px]">{site.brand.full}</span>
-              <span className="text-[11px] uppercase tracking-[0.14em] text-white/60">
+              <span className="font-display text-[15px] font-medium">{site.brand.full}</span>
+              <span className="mt-1 text-[10px] uppercase tracking-[0.22em] text-frost-500">
                 Лицей-интернат · Ақтөбе
               </span>
             </div>
           </div>
-          <p className="mt-5 max-w-[42ch] text-[14.5px] leading-relaxed text-white/70">
+          <p className="mt-6 max-w-[42ch] text-[14.5px] leading-relaxed text-white/65">
             {site.tagline}
           </p>
-          <div className="mt-5 flex gap-4 text-[14px]">
+          <div className="mt-6 flex gap-6 text-[14px] font-medium">
             <a
               href={site.contacts.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="text-gold-500 transition-colors duration-150 hover:text-white"
+              className="text-white/75 underline-offset-4 transition-colors duration-150 hover:text-white hover:underline"
             >
               WhatsApp
             </a>
@@ -39,7 +39,7 @@ export function SiteFooter() {
               href={site.contacts.instagram}
               target="_blank"
               rel="noreferrer"
-              className="text-gold-500 transition-colors duration-150 hover:text-white"
+              className="text-white/75 underline-offset-4 transition-colors duration-150 hover:text-white hover:underline"
             >
               Instagram
             </a>
@@ -47,12 +47,12 @@ export function SiteFooter() {
         </div>
 
         <nav aria-label="Төменгі деректеме">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-frost-500">
             Навигация
           </p>
-          <ul className="mt-4 space-y-2.5 text-[14.5px]">
+          <ul className="mt-5 space-y-3 text-[14.5px]">
             <li>
-              <Link href="/" className="text-white/80 transition-colors duration-150 hover:text-white">
+              <Link href="/" className="text-white/75 transition-colors duration-150 hover:text-white">
                 Басты бет
               </Link>
             </li>
@@ -60,7 +60,7 @@ export function SiteFooter() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-white/80 transition-colors duration-150 hover:text-white"
+                  className="text-white/75 transition-colors duration-150 hover:text-white"
                 >
                   {item.label}
                 </Link>
@@ -70,10 +70,10 @@ export function SiteFooter() {
         </nav>
 
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-frost-500">
             Бағдарламалар
           </p>
-          <ul className="mt-4 space-y-2.5 text-[14.5px] text-white/80">
+          <ul className="mt-5 space-y-3 text-[14.5px] text-white/75">
             {programmeSubjects.map((s) => (
               <li key={s}>{s}</li>
             ))}
@@ -81,10 +81,10 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-frost-500">
             Байланыс
           </p>
-          <ul className="mt-4 space-y-2.5 text-[14.5px] text-white/80">
+          <ul className="mt-5 space-y-3 text-[14.5px] text-white/75">
             <li>
               <a href={`tel:${site.contacts.phonePrimary.replace(/[^+\d]/g, "")}`} className="transition-colors duration-150 hover:text-white">
                 {site.contacts.phonePrimary}
@@ -101,15 +101,15 @@ export function SiteFooter() {
               </a>
             </li>
             <li>{site.contacts.address}</li>
-            <li className="text-white/60">{site.contacts.hours}</li>
+            <li className="text-white/50">{site.contacts.hours}</li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-5 py-5 text-[13px] text-white/50 sm:flex-row sm:items-center sm:justify-between md:px-8">
+      <div className="border-t border-line-dark">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-5 py-6 text-[13px] text-white/45 sm:flex-row sm:items-center sm:justify-between md:px-10">
           <p>© 2026 {site.brand.full}. Барлық құқықтар қорғалған.</p>
-          <p className="flex gap-5">
+          <p className="flex gap-6">
             <Link href="/contact" className="transition-colors duration-150 hover:text-white">
               Құпиялылық саясаты
             </Link>
