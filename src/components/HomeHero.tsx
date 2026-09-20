@@ -94,7 +94,7 @@ export function HomeHero({ image, imageAlt }: HomeHeroProps) {
           />
           <figcaption className="flex items-center justify-between border-t border-line-dark px-1 py-3 text-[13px] text-frost-500">
             <span>«Ақбөбек» түлектері · AL26</span>
-            <Link href="/campus" className="font-medium text-white underline-offset-4 hover:underline">
+            <Link href="/campus" className="py-3 -my-3 font-medium text-white underline-offset-4 hover:underline">
               Кампус →
             </Link>
           </figcaption>

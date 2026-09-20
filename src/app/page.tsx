@@ -55,7 +55,7 @@ export default function Home() {
               />
               <Link
                 href="/about"
-                className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
+                className="mt-6 inline-flex items-center gap-2 py-2.5 -my-2.5 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
               >
                 Лицей туралы толығырақ <span aria-hidden="true">→</span>
               </Link>
@@ -200,7 +200,7 @@ export default function Home() {
                 />
                 <Link
                   href="/campus"
-                  className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
+                  className="mt-6 inline-flex items-center gap-2 py-2.5 -my-2.5 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
                 >
                   Кампус туралы толығырақ <span aria-hidden="true">→</span>
                 </Link>
@@ -229,7 +229,7 @@ export default function Home() {
             <SectionHeading title={<span id="news-title">Соңғы жаңалықтар</span>} />
             <Link
               href="/news"
-              className="inline-flex shrink-0 items-center gap-2 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
+              className="inline-flex shrink-0 items-center gap-2 py-2.5 -my-2.5 text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline"
             >
               Барлық жаңалықтар <span aria-hidden="true">→</span>
             </Link>
