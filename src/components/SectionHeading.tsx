@@ -30,8 +30,8 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            "text-[11px] font-semibold uppercase tracking-[0.18em]",
-            dark ? "text-gold-500" : "text-gold-600",
+            "text-[11px] font-semibold uppercase tracking-[0.2em]",
+            dark ? "text-frost-500" : "text-steel-600",
           )}
         >
           {eyebrow}
@@ -39,9 +39,9 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "mt-3 font-display text-3xl leading-[1.15] text-balance md:text-[2.75rem] md:leading-[1.1]",
+          "font-display text-3xl leading-[1.15] font-medium text-balance md:text-[2.6rem] md:leading-[1.12]",
           dark ? "text-white" : "text-navy-900",
-          eyebrow && "mt-3",
+          eyebrow && "mt-4",
         )}
       >
         {title}
@@ -50,7 +50,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-4 max-w-[65ch] text-base leading-relaxed",
-            dark ? "text-navy-100" : "text-ink-600",
+            dark ? "text-frost-100" : "text-ink-600",
           )}
         >
           {lead}

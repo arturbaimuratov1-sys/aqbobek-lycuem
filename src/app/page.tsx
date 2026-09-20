@@ -24,27 +24,28 @@ export default function Home() {
         imageAlt="«Ақбөбек» лицейінің түлектері — AL26"
       />
 
-      {/* Mission / Vision / Values */}
-      <section aria-label="Миссия, көзқарас, құндылықтар" className="border-y border-line bg-parchment">
-        <div className="mx-auto grid max-w-[1400px] gap-8 px-5 py-12 md:grid-cols-3 md:px-8 lg:py-14">
-          <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-600">Миссия</p>
-            <p className="mt-2 font-display text-xl leading-snug text-navy-900">{site.mission}</p>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-600">Көзқарас</p>
-            <p className="mt-2 font-display text-xl leading-snug text-navy-900">{site.vision}</p>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-600">Құндылықтар</p>
-            <p className="mt-2 text-[15px] leading-relaxed text-ink-600">{site.values.join(" · ")}</p>
-          </Reveal>
+      {/* Mission / Vision / Values — light editorial 01/02/03 */}
+      <section aria-label="Миссия, көзқарас, құндылықтар" className="bg-paper">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 md:grid-cols-3 md:px-10 lg:py-24">
+          {[
+            { n: "01", k: "Миссия", v: site.mission },
+            { n: "02", k: "Көзқарас", v: site.vision },
+            { n: "03", k: "Құндылықтар", v: site.values.join(" · ") },
+          ].map((item, i) => (
+            <Reveal key={item.n} delay={Math.min(i * 0.08, 0.16)}>
+              <p aria-hidden="true" className="font-display text-6xl font-semibold text-steel-100 md:text-7xl">
+                {item.n}
+              </p>
+              <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-steel-600">{item.k}</p>
+              <p className="mt-2 font-display text-xl leading-snug font-medium text-navy-900">{item.v}</p>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* Why Aqbobek */}
-      <section aria-labelledby="why-title" className="bg-white">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-16 md:px-8 lg:grid-cols-12 lg:py-24">
+      {/* Why Aqbobek — mist band, sticky heading + numbered rows */}
+      <section aria-labelledby="why-title" className="bg-mist">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 md:px-10 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <SectionHeading
@@ -61,12 +62,12 @@ export default function Home() {
           </div>
           <ol className="lg:col-span-7">
             {whyLyceum.map((item, i) => (
-              <Reveal as="li" key={item.title} delay={Math.min(i * 0.05, 0.15)} className="flex gap-6 border-t border-line py-7 last:border-b">
-                <span aria-hidden="true" className="font-display text-lg text-gold-600">
+              <Reveal as="li" key={item.title} delay={Math.min(i * 0.05, 0.15)} className="group flex gap-6 border-t border-ink-900/10 py-7 transition-colors duration-200 last:border-b hover:bg-paper">
+                <span aria-hidden="true" className="font-display text-lg font-medium text-steel-600">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="font-display text-[22px] text-navy-900">{item.title}</h3>
+                  <h3 className="font-display text-[22px] font-medium text-navy-900">{item.title}</h3>
                   <p className="mt-1.5 max-w-[60ch] text-[15px] leading-relaxed text-ink-600">{item.text}</p>
                 </div>
               </Reveal>
@@ -75,23 +76,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Education teaser */}
-      <section aria-labelledby="edu-title" className="border-y border-line bg-parchment">
-        <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
+      {/* Education — navy statement band, giant grades */}
+      <section aria-labelledby="edu-title" className="bg-navy-900">
+        <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-10 lg:py-24">
           <SectionHeading
+            dark
             title={<span id="edu-title">7–11 сыныптарға арналған тереңдетілген білім</span>}
             lead="Негізгі пәндерді тереңдетіп оқытуға және білімнің практикалық қолданылуына баса назар аударамыз."
           />
-          <div className="mt-10 grid gap-px border border-line bg-line md:grid-cols-2">
+          <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-10">
             {programmes.map((p, i) => (
-              <Reveal key={p.id} delay={i * 0.08} className="bg-white p-8 md:p-10">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-600">{p.stage}</p>
-                <h3 className="mt-2 font-display text-2xl text-navy-900">{p.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{p.lead}</p>
-                <ul className="mt-5 space-y-2.5">
+              <Reveal key={p.id} delay={i * 0.08} className="border-t border-line-dark pt-8">
+                <p aria-hidden="true" className="font-display text-6xl font-semibold text-white/15 md:text-7xl">
+                  {p.stage}
+                </p>
+                <h3 className="mt-4 font-display text-2xl font-medium text-white">{p.title}</h3>
+                <p className="mt-3 max-w-[58ch] text-[15px] leading-relaxed text-frost-100">{p.lead}</p>
+                <ul className="mt-6 space-y-3">
                   {p.points.map((point) => (
-                    <li key={point} className="flex gap-3 text-[14.5px] leading-relaxed text-ink-600">
-                      <span aria-hidden="true" className="mt-[9px] h-1 w-1 shrink-0 bg-gold-500" />
+                    <li key={point} className="flex gap-3 text-[14.5px] leading-relaxed text-frost-100">
+                      <span aria-hidden="true" className="mt-[9px] h-1 w-4 shrink-0 bg-steel-500" />
                       {point}
                     </li>
                   ))}
@@ -99,12 +103,12 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-            <span className="text-[13px] font-semibold uppercase tracking-[0.14em] text-ink-500">Үйірмелер:</span>
+          <Reveal className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line-dark pt-8">
+            <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-frost-500">Үйірмелер:</span>
             {clubs.map((c) => (
-              <span key={c.name} className="text-[15px] font-medium text-navy-900">{c.name}</span>
+              <span key={c.name} className="text-[15px] font-medium text-white">{c.name}</span>
             ))}
-            <Link href="/education" className="text-[15px] font-semibold text-navy-900 underline-offset-4 hover:underline">
+            <Link href="/education" className="text-[15px] font-semibold text-white underline-offset-4 hover:underline">
               Барлық бағдарламалар →
             </Link>
           </Reveal>
